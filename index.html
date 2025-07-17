@@ -45,10 +45,22 @@
             position: relative;
         }
 
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            margin-right: 10px;
+        }
+
+        .logo-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
         .logo-container {
             display: flex;
             align-items: center;
             z-index: 1001;
+            text-decoration: none;
         }
 
         .logo-text {
@@ -513,9 +525,8 @@
         }
 
         .about-content {
-            display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 60px;
+            display: flex;
+            justify-content: center;
             align-items: center;
             margin-top: 60px;
         }
@@ -544,31 +555,50 @@
         }
 
         .founder-photo {
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(214, 179, 39, 0.2);
-            border: 3px solid rgba(214, 179, 39, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .founder-photo:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(214, 179, 39, 0.3);
+            text-align: center;
         }
 
         .founder-photo img {
-            width: 100%;
-            height: 400px;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
             object-fit: cover;
             display: block;
+            margin: 0 auto;
+            box-shadow: 0 15px 40px rgba(214, 179, 39, 0.3);
+            border: 4px solid rgba(214, 179, 39, 0.4);
+            transition: all 0.3s ease;
         }
 
-        .founder-caption {
+        .founder-photo:hover img {
+            transform: scale(1.05);
+            box-shadow: 0 20px 50px rgba(214, 179, 39, 0.4);
+        }
+
+        .founder-info {
+            margin-top: 25px;
             text-align: center;
-            margin-top: 15px;
-            font-size: 0.95rem;
-            color: #8a7015;
+        }
+
+        .founder-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            font-family: 'Radley', serif;
+            color: #3e3b39;
+            margin-bottom: 8px;
+        }
+
+        .founder-title {
+            font-size: 1.1rem;
             font-weight: 600;
+            color: #8a7015;
+            margin-bottom: 5px;
+        }
+
+        .founder-organization {
+            font-size: 1rem;
+            color: #3e3b39;
+            opacity: 0.8;
         }
 
         @media (max-width: 768px) {
@@ -583,12 +613,13 @@
             }
             
             .founder-photo {
-                max-width: 250px;
+                max-width: 320px;
                 margin: 0 auto;
             }
             
             .founder-photo img {
-                height: 300px;
+                width: 220px;
+                height: 220px;
             }
         }
 
@@ -790,8 +821,10 @@
     <header>
         <nav>
             <div class="logo-container">
-                <a href="#home" class="logo-text">
-                    Ignite<br>Movement
+                <a href="#home" style="display: flex; align-items: center; text-decoration: none;">
+                    <div class="logo-icon">
+                        <img src="logo.png" alt="Ignite Movement Logo" style="width: 100%; height: 100%; object-fit: contain;" />
+                    </div>
                 </a>
             </div>
             
@@ -938,19 +971,16 @@
             
             <div class="about-content">
                 <div class="about-text">
-                    <h3>By Gen-Z, For Gen-Z</h3>
-                    <p>No adults pretending to understand your world. This is YOUR movement, led by people who get what you're going through. We're not here to give you another youth program – we're here to ignite a holy revolution.</p>
-                    
-                    <h3>Real Impact</h3>
-                    <p>We're not just talking about change – we're creating it. In schools, communities, and hearts across Belize. Every burn night, every leadership bootcamp, every outreach is designed to equip you to be the movement maker God called you to be.</p>
-                    
-                    <h3>Holy Fire</h3>
-                    <p>Jesus didn't come to start another boring religion. He came to ignite a revolution – and that fire starts with you. We believe this generation is called to burn brighter than any before us.</p>
+                    <!-- Empty space for clean layout -->
                 </div>
                 
                 <div class="founder-photo">
-                    <img src="founder-photo.jpg" alt="Founder of Ignite Movement" />
-                    <div class="founder-caption">Leading the movement</div>
+                    <img src="founder-photo.jpg" alt="David Brent Heavener" />
+                    <div class="founder-info">
+                        <div class="founder-name">David Brent Heavener</div>
+                        <div class="founder-title">Disciple</div>
+                        <div class="founder-organization">Ignite Movement</div>
+                    </div>
                 </div>
             </div>
         </div>
