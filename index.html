@@ -229,11 +229,37 @@
             position: absolute;
             font-size: 2rem;
             animation: float 6s ease-in-out infinite;
+            z-index: 1;
         }
 
         .emoji-1 { top: 20%; left: 10%; animation-delay: 0s; }
         .emoji-2 { top: 60%; right: 15%; animation-delay: 2s; }
         .emoji-3 { bottom: 30%; left: 20%; animation-delay: 4s; }
+
+        /* Cursor Following Flame */
+        .cursor-flame {
+            position: fixed;
+            font-size: 2rem;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.1s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Mobile emoji fixes */
+        @media (max-width: 768px) {
+            .floating-emoji {
+                font-size: 1.5rem;
+                animation-duration: 4s;
+            }
+            
+            .emoji-1 { top: 15%; left: 5%; }
+            .emoji-2 { top: 70%; right: 5%; }
+            
+            .cursor-flame {
+                display: none; /* Hide cursor flame on mobile */
+            }
+        }
 
         /* Section Styles */
         .section-title {
@@ -250,7 +276,7 @@
 
         /* Main Programs Section */
         .main-programs {
-            padding: 120px 0;
+            padding: 80px 0;
             background: linear-gradient(135deg, #fffbf4 0%, #f9f5e8 100%);
             position: relative;
             overflow: hidden;
@@ -807,13 +833,175 @@
             }
         }
 
-        @media (min-width: 769px) {
-            .menu-toggle {
-                display: none;
+        /* Ministry Truck Section */
+        .ministry-truck {
+            background: linear-gradient(135deg, rgba(214, 179, 39, 0.1), rgba(184, 148, 26, 0.05));
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(214, 179, 39, 0.2);
+            border-bottom: 1px solid rgba(214, 179, 39, 0.2);
+        }
+
+        .truck-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .truck-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: 'Radley', serif;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #d6b327, #b8941a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .truck-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #3e3b39;
+            opacity: 0.9;
+            margin-bottom: 25px;
+        }
+
+        .truck-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, #d6b327, #b8941a);
+            color: #fffbf4;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(214, 179, 39, 0.3);
+        }
+
+        .truck-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(214, 179, 39, 0.4);
+        }
+
+        /* Photo Gallery Section - Dual Photo Display */
+        .photo-gallery {
+            padding: 80px 0;
+            background: #fffbf4;
+        }
+
+        .photo-slider {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto 0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(214, 179, 39, 0.2);
+        }
+
+        .photo-container {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .photo-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            display: flex;
+            gap: 10px;
+        }
+
+        .photo-slide.active {
+            opacity: 1;
+        }
+
+        .photo-slide img {
+            width: 50%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .photo-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .photo-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .photo-dot.active {
+            background: #d6b327;
+            transform: scale(1.2);
+        }
+
+        .photo-arrows {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(214, 179, 39, 0.8);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .photo-slider:hover .photo-arrows {
+            opacity: 1;
+        }
+
+        .photo-arrows:hover {
+            background: #d6b327;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .photo-prev {
+            left: 15px;
+        }
+
+        .photo-next {
+            right: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .photo-container {
+                height: 250px;
             }
             
-            .nav-links.desktop-nav {
-                display: flex;
+            .photo-slider {
+                max-width: 90%;
+            }
+            
+            .photo-slide {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .photo-slide img {
+                width: 100%;
+                height: 50%;
             }
         }
     </style>
@@ -859,9 +1047,9 @@
     </div>
 
     <section class="hero" id="home">
-        <div class="floating-emoji emoji-1">🚀</div>
+        <div class="floating-emoji emoji-1">🔥</div>
         <div class="floating-emoji emoji-2">💫</div>
-        <div class="floating-emoji emoji-3">🌟</div>
+        <div class="floating-emoji emoji-3">🚀</div>
         
         <div class="hero-content">
             <h1>Ignite Movement Belize</h1>
@@ -870,6 +1058,51 @@
         </div>
         
         <div class="scroll-indicator">↓</div>
+    </section>
+
+    <!-- Ministry Truck Section -->
+    <section class="ministry-truck">
+        <div class="container">
+            <div class="truck-content">
+                <h3 class="truck-title">🚐 Help Us Get a Ministry Truck!</h3>
+                <p class="truck-description">We're raising funds for a ministry truck to reach gen-z in Belize! Partner with us to see the movement keep rollin'!</p>
+                <a href="https://www.paypal.com/donate/?hosted_button_id=FMMV25J83A7AS" class="truck-button" target="_blank">Donate Towards A Truck</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section class="photo-gallery" id="photos">
+        <div class="container">
+            <h2 class="section-title">Our Movement</h2>
+            <p style="text-align: center; font-size: 1.2rem; opacity: 0.8; max-width: 600px; margin: 0 auto; color: #3e3b39;">See the faces and moments that make up our community.</p>
+            
+            <div class="photo-slider">
+                <div class="photo-container">
+                    <div class="photo-slide active">
+                        <img src="photo1.jpg" alt="Ignite Movement Photo 1" />
+                        <img src="photo2.jpg" alt="Ignite Movement Photo 2" />
+                    </div>
+                    <div class="photo-slide">
+                        <img src="photo3.jpg" alt="Ignite Movement Photo 3" />
+                        <img src="photo4.jpg" alt="Ignite Movement Photo 4" />
+                    </div>
+                    <div class="photo-slide">
+                        <img src="photo5.jpg" alt="Ignite Movement Photo 5" />
+                        <img src="photo1.jpg" alt="Ignite Movement Photo 1" />
+                    </div>
+                </div>
+                
+                <button class="photo-arrows photo-prev" onclick="changeSlide(-1)">‹</button>
+                <button class="photo-arrows photo-next" onclick="changeSlide(1)">›</button>
+                
+                <div class="photo-nav">
+                    <div class="photo-dot active" onclick="currentSlide(1)"></div>
+                    <div class="photo-dot" onclick="currentSlide(2)"></div>
+                    <div class="photo-dot" onclick="currentSlide(3)"></div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Main Programs Section -->
@@ -1070,6 +1303,46 @@
                     }
                 });
             });
+
+            // Cursor following flame
+            const cursorFlame = document.getElementById('cursorFlame');
+            
+            document.addEventListener('mousemove', function(e) {
+                if (window.innerWidth > 768) { // Only on desktop
+                    cursorFlame.style.left = e.clientX + 'px';
+                    cursorFlame.style.top = e.clientY + 'px';
+                }
+            });
+
+            // Photo slider functionality
+            let currentSlideIndex = 0;
+            const slides = document.querySelectorAll('.photo-slide');
+            const dots = document.querySelectorAll('.photo-dot');
+
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+            }
+
+            window.changeSlide = function(direction) {
+                currentSlideIndex += direction;
+                if (currentSlideIndex >= slides.length) currentSlideIndex = 0;
+                if (currentSlideIndex < 0) currentSlideIndex = slides.length - 1;
+                showSlide(currentSlideIndex);
+            }
+
+            window.currentSlide = function(index) {
+                currentSlideIndex = index - 1;
+                showSlide(currentSlideIndex);
+            }
+
+            // Auto advance slides every 3 seconds
+            setInterval(() => {
+                changeSlide(1);
+            }, 3000);
 
             // Header background on scroll
             window.addEventListener('scroll', () => {
