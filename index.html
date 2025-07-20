@@ -206,7 +206,7 @@
             color: #3e3b39;
         }
 
-        .cta-button {
+        .cta-button, .truck-button {
             display: inline-block;
             padding: 15px 40px;
             background: linear-gradient(45deg, #d6b327, #b8941a);
@@ -217,9 +217,11 @@
             font-size: 1.1rem;
             transition: all 0.3s ease;
             box-shadow: 0 10px 30px rgba(214, 179, 39, 0.3);
+            z-index: 10;
+            position: relative;
         }
 
-        .cta-button:hover {
+        .cta-button:hover, .truck-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(214, 179, 39, 0.4);
         }
@@ -251,10 +253,12 @@
             .floating-emoji {
                 font-size: 1.5rem;
                 animation-duration: 4s;
+                z-index: 1;
             }
             
             .emoji-1 { top: 15%; left: 5%; }
             .emoji-2 { top: 70%; right: 5%; }
+            .emoji-3 { bottom: 40%; left: 5%; } /* Moved down so it's not behind button */
             
             .cursor-flame {
                 display: none; /* Hide cursor flame on mobile */
@@ -987,7 +991,7 @@
 
         @media (max-width: 768px) {
             .photo-container {
-                height: 250px;
+                height: 400px;
             }
             
             .photo-slider {
@@ -995,13 +999,15 @@
             }
             
             .photo-slide {
-                flex-direction: column;
-                gap: 5px;
+                flex-direction: row; /* Keep side by side */
+                gap: 8px;
             }
             
             .photo-slide img {
-                width: 100%;
-                height: 50%;
+                width: 50%;
+                height: 100%; /* Full height for vertical photos */
+                object-fit: cover;
+                border-radius: 8px;
             }
         }
     </style>
