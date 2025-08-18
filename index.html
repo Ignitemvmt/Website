@@ -278,6 +278,129 @@
             background-clip: text;
         }
 
+        /* Photo Gallery Section - Dual Photo Display */
+        .photo-gallery {
+            padding: 80px 0;
+            background: #fffbf4;
+        }
+
+        .photo-slider {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto 0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(214, 179, 39, 0.2);
+        }
+
+        .photo-container {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .photo-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            display: flex;
+            gap: 10px;
+        }
+
+        .photo-slide.active {
+            opacity: 1;
+        }
+
+        .photo-slide img {
+            width: 50%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .photo-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .photo-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .photo-dot.active {
+            background: #d6b327;
+            transform: scale(1.2);
+        }
+
+        .photo-arrows {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(214, 179, 39, 0.8);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .photo-slider:hover .photo-arrows {
+            opacity: 1;
+        }
+
+        .photo-arrows:hover {
+            background: #d6b327;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .photo-prev {
+            left: 15px;
+        }
+
+        .photo-next {
+            right: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .photo-container {
+                height: 400px;
+            }
+            
+            .photo-slider {
+                max-width: 90%;
+            }
+            
+            .photo-slide {
+                flex-direction: row; /* Keep side by side */
+                gap: 8px;
+            }
+            
+            .photo-slide img {
+                width: 50%;
+                height: 100%; /* Full height for vertical photos */
+                object-fit: cover;
+                border-radius: 8px;
+            }
+        }
+
         /* Main Programs Section */
         .main-programs {
             padding: 80px 0;
@@ -827,6 +950,7 @@
         .nav-overlay .nav-links a::after {
             display: none;
         }
+        
         @media (max-width: 768px) {
             .menu-toggle {
                 display: flex;
@@ -834,180 +958,6 @@
             
             .nav-links.desktop-nav {
                 display: none;
-            }
-        }
-
-        /* Ministry Truck Section */
-        .ministry-truck {
-            background: linear-gradient(135deg, rgba(214, 179, 39, 0.1), rgba(184, 148, 26, 0.05));
-            padding: 40px 20px;
-            text-align: center;
-            border-top: 1px solid rgba(214, 179, 39, 0.2);
-            border-bottom: 1px solid rgba(214, 179, 39, 0.2);
-        }
-
-        .truck-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .truck-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            font-family: 'Radley', serif;
-            margin-bottom: 15px;
-            background: linear-gradient(45deg, #d6b327, #b8941a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .truck-description {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #3e3b39;
-            opacity: 0.9;
-            margin-bottom: 25px;
-        }
-
-        .truck-button {
-            display: inline-block;
-            padding: 12px 30px;
-            background: linear-gradient(45deg, #d6b327, #b8941a);
-            color: #fffbf4;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(214, 179, 39, 0.3);
-        }
-
-        .truck-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(214, 179, 39, 0.4);
-        }
-
-        /* Photo Gallery Section - Dual Photo Display */
-        .photo-gallery {
-            padding: 80px 0;
-            background: #fffbf4;
-        }
-
-        .photo-slider {
-            position: relative;
-            max-width: 800px;
-            margin: 40px auto 0;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(214, 179, 39, 0.2);
-        }
-
-        .photo-container {
-            position: relative;
-            width: 100%;
-            height: 350px;
-            overflow: hidden;
-        }
-
-        .photo-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            display: flex;
-            gap: 10px;
-        }
-
-        .photo-slide.active {
-            opacity: 1;
-        }
-
-        .photo-slide img {
-            width: 50%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-
-        .photo-nav {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-        }
-
-        .photo-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .photo-dot.active {
-            background: #d6b327;
-            transform: scale(1.2);
-        }
-
-        .photo-arrows {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(214, 179, 39, 0.8);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            opacity: 0;
-        }
-
-        .photo-slider:hover .photo-arrows {
-            opacity: 1;
-        }
-
-        .photo-arrows:hover {
-            background: #d6b327;
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .photo-prev {
-            left: 15px;
-        }
-
-        .photo-next {
-            right: 15px;
-        }
-
-        @media (max-width: 768px) {
-            .photo-container {
-                height: 400px;
-            }
-            
-            .photo-slider {
-                max-width: 90%;
-            }
-            
-            .photo-slide {
-                flex-direction: row; /* Keep side by side */
-                gap: 8px;
-            }
-            
-            .photo-slide img {
-                width: 50%;
-                height: 100%; /* Full height for vertical photos */
-                object-fit: cover;
-                border-radius: 8px;
             }
         }
     </style>
@@ -1064,29 +1014,6 @@
         </div>
         
         <div class="scroll-indicator">↓</div>
-    </section>
-
-    <!-- Ministry Truck Section -->
-    <section class="ministry-truck">
-        <div class="container">
-            <div class="truck-content">
-                <h3 class="truck-title">🚐 Help Us Get a Ministry Truck!</h3>
-                <p class="truck-description">We're raising funds for a ministry truck to reach gen-z in Belize! Partner with us to see the movement keep rollin'!</p>
-                <a href="https://www.paypal.com/donate?campaign_id=YUSNB2G5HNMZL" class="truck-button" target="_blank">Donate Towards A Truck</a>
-                
-                <div class="paypal-embed">
-                    <iframe
-                        src="https://www.paypal.com/giving/campaigns?campaign_id=YUSNB2G5HNMZL"
-                        title="PayPal donate campaign card"
-                        width="382"
-                        height="550"
-                        style="border: none;"
-                        allowtransparency="true"
-                        scrolling="no">
-                    </iframe>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- Photo Gallery Section -->
